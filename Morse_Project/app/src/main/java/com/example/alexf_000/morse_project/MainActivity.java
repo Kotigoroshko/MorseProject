@@ -1,17 +1,52 @@
 package com.example.alexf_000.morse_project;
 
+import android.hardware.Camera;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    Camera camera;
+    private boolean lightOn = false;
+    private Button but;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        but = (Button)findViewById(R.id.button);
+        //but.setText("On");
+    }
+
+    public void onClick(View view){
+
+        if(lightOn == false){
+            camera = Camera.open();
+
+            Camera.Parameters params = camera.getParameters();
+            params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+            camera.setParameters(params);
+
+            camera.startPreview();
+            but.setText("Off");
+            lightOn = true;
+        }
+        else{
+            camera.stopPreview();
+            camera.release();
+            lightOn = false;
+            but.setText("On");
+        }
+
+
     }
 
 

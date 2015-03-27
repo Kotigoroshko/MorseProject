@@ -24,26 +24,12 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         but = (Button)findViewById(R.id.button);
-        myLight = new MyLight();
 
     }
 
     public void onClick(View view){
 
-       /* if(lightOn == false){
-
-            myLight.lightOn();
-
-            but.setText("Off");
-            lightOn = true;
-        }
-        else{
-
-            myLight.lightOff();
-
-            lightOn = false;
-            but.setText("On");
-        }*/
+        myLight = new MyLight();
 
         // SOS
         myLight.lightDot();
@@ -68,6 +54,7 @@ public class MainActivity extends ActionBarActivity {
         MyLight.pause(MyLight.SYMBOL_SPACE);
         myLight.lightDot();
 
+        myLight.end();
     }
 
 

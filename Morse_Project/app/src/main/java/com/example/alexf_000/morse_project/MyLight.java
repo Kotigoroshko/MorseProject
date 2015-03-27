@@ -7,9 +7,10 @@ import android.hardware.Camera;
  */
 public class MyLight {
     private Camera camera;
+    private Camera.Parameters params;
 
     // константи пауз
-    public static final int UNIT = 100;
+    public static final int UNIT = 150;
 
     public static final int DOT = UNIT;
     public static final int DASH = 3 * UNIT;
@@ -18,21 +19,33 @@ public class MyLight {
     public static final int LETTER_SPACE = 3 * UNIT;
     public static final int WORD_SPACE = 7 * UNIT;
 
-    public MyLight(){};
+    public MyLight(){
+        start();
+    };
 
-    public void lightOn(){
+    public void start(){
         camera = Camera.open();
 
-        Camera.Parameters params = camera.getParameters();
-        params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+        params = camera.getParameters();
+        params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
         camera.setParameters(params);
 
         camera.startPreview();
     }
 
-    public void lightOff(){
+    public void end(){
         camera.stopPreview();
         camera.release();
+    }
+
+    public void lightOn(){
+        params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+        camera.setParameters(params);
+    }
+
+    public void lightOff(){
+        params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+        camera.setParameters(params);
     }
 
     public void lightDot() {

@@ -8,6 +8,16 @@ import android.hardware.Camera;
 public class MyLight {
     private Camera camera;
 
+    // константи пауз
+    public static final int UNIT = 100;
+
+    public static final int DOT = UNIT;
+    public static final int DASH = 3 * UNIT;
+
+    public static final int SYMBOL_SPACE = UNIT;
+    public static final int LETTER_SPACE = 3 * UNIT;
+    public static final int WORD_SPACE = 7 * UNIT;
+
     public MyLight(){};
 
     public void lightOn(){
@@ -23,5 +33,25 @@ public class MyLight {
     public void lightOff(){
         camera.stopPreview();
         camera.release();
+    }
+
+    public void lightDot() {
+        lightOn();
+        pause(DOT);
+        lightOff();
+    }
+
+    public void lightDash() {
+        lightOn();
+        pause(DASH);
+        lightOff();
+    }
+
+    public static void pause(int constant){
+        try {
+            Thread.sleep(constant);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

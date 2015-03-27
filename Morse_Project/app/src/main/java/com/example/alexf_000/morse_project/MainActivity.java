@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void onClick(View view){
 
-        if(lightOn == false){
+       /* if(lightOn == false){
 
             myLight.lightOn();
 
@@ -43,8 +43,30 @@ public class MainActivity extends ActionBarActivity {
 
             lightOn = false;
             but.setText("On");
-        }
+        }*/
 
+        // SOS
+        myLight.lightDot();
+        MyLight.pause(MyLight.SYMBOL_SPACE);
+        myLight.lightDot();
+        MyLight.pause(MyLight.SYMBOL_SPACE);
+        myLight.lightDot();
+
+        MyLight.pause(MyLight.LETTER_SPACE);
+
+        myLight.lightDash();
+        MyLight.pause(MyLight.SYMBOL_SPACE);
+        myLight.lightDash();
+        MyLight.pause(MyLight.SYMBOL_SPACE);
+        myLight.lightDash();
+
+        MyLight.pause(MyLight.LETTER_SPACE);
+
+        myLight.lightDot();
+        MyLight.pause(MyLight.SYMBOL_SPACE);
+        myLight.lightDot();
+        MyLight.pause(MyLight.SYMBOL_SPACE);
+        myLight.lightDot();
 
     }
 

@@ -16,6 +16,7 @@ public class MainActivity extends ActionBarActivity {
     Camera camera;
     private boolean lightOn = false;
     private Button but;
+    private MyLight myLight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,25 +24,23 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         but = (Button)findViewById(R.id.button);
-        //but.setText("On");
+        myLight = new MyLight();
+
     }
 
     public void onClick(View view){
 
         if(lightOn == false){
-            camera = Camera.open();
 
-            Camera.Parameters params = camera.getParameters();
-            params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-            camera.setParameters(params);
+            myLight.lightOn();
 
-            camera.startPreview();
             but.setText("Off");
             lightOn = true;
         }
         else{
-            camera.stopPreview();
-            camera.release();
+
+            myLight.lightOff();
+
             lightOn = false;
             but.setText("On");
         }

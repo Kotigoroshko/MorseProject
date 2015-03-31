@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class MainActivity extends ActionBarActivity {
     private boolean lightOn = false;
     private Button but;
     private MyLight myLight;
+    private EditText textField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +27,19 @@ public class MainActivity extends ActionBarActivity {
 
         but = (Button)findViewById(R.id.button);
 
+        textField = (EditText)findViewById(R.id.editText);
+
     }
 
     public void onClick(View view){
 
         myLight = new MyLight();
 
+        StringTransformer st = new StringTransformer(textField.getText().toString());
+
+        myLight.lightStr(st.getMorse_string());
+
+        /*
         // SOS
         myLight.lightDot();
         MyLight.pause(MyLight.SYMBOL_SPACE);
@@ -53,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
         myLight.lightDot();
         MyLight.pause(MyLight.SYMBOL_SPACE);
         myLight.lightDot();
+        */
 
         myLight.end();
     }

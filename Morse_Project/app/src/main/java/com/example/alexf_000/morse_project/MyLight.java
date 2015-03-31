@@ -9,16 +9,6 @@ public class MyLight {
     private Camera camera;
     private Camera.Parameters params;
 
-    // константи пауз
-    public static final int UNIT = 150;
-
-    public static final int DOT = UNIT;
-    public static final int DASH = 3 * UNIT;
-
-    public static final int SYMBOL_SPACE = UNIT;
-    public static final int LETTER_SPACE = 3 * UNIT;
-    public static final int WORD_SPACE = 7 * UNIT;
-
     public MyLight(){
         start();
     };
@@ -50,14 +40,32 @@ public class MyLight {
 
     public void lightDot() {
         lightOn();
-        pause(DOT);
+        pause(Constants.DOT);
         lightOff();
     }
 
     public void lightDash() {
         lightOn();
-        pause(DASH);
+        pause(Constants.DASH);
         lightOff();
+    }
+
+    public void lightStr(String str){
+        char[] string = str.toCharArray();
+        for(int i=0; i<str.length(); i++){
+            if(string[i] == '.'){
+                lightDot();
+                pause(Constants.SYMBOL_SPACE);
+            }
+
+            if(string[i] == '-'){
+                lightDash();
+                pause(Constants.SYMBOL_SPACE);
+            }
+
+            if(string[i] == '|')
+                pause(Constants.LETTER_SPACE - Constants.SYMBOL_SPACE);
+        }
     }
 
     public static void pause(int constant){

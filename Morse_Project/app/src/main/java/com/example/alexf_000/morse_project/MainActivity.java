@@ -1,5 +1,6 @@
 package com.example.alexf_000.morse_project;
 
+import android.content.Context;
 import android.hardware.Camera;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class MainActivity extends ActionBarActivity {
     private boolean lightOn = false;
     private Button but;
     private MyLight myLight;
+    private MyVibrator vibr;
     private EditText textField;
 
     @Override
@@ -25,13 +27,23 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        but = (Button)findViewById(R.id.button);
+       //but = (Button)findViewById(R.id.button);
 
         textField = (EditText)findViewById(R.id.editText);
 
     }
 
-    public void onClick(View view){
+    public void onVibroClick(View view){
+
+        vibr = new MyVibrator(MainActivity.this);
+
+        StringTransformer st = new StringTransformer(textField.getText().toString());
+
+        vibr.vibrateStr(st.getMorse_string());
+
+    }
+
+    public void onLightClick(View view){
 
         myLight = new MyLight();
 

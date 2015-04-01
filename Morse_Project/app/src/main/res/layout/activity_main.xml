@@ -11,7 +11,7 @@
         android:text="Light"
         android:id="@+id/button"
         android:layout_marginTop="59dp"
-        android:onClick="onClick"
+        android:onClick="onLightClick"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -24,5 +24,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:hint="Enter word" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vibrate"
+        android:id="@+id/vibrBut"
+        android:layout_marginTop="54dp"
+        android:onClick="onVibroClick"
+        android:layout_below="@+id/button"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button" />
 
 </RelativeLayout>

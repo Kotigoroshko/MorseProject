@@ -46,10 +46,7 @@ public class MainActivity extends ActionBarActivity {
     public void onLightClick(View view){
 
         myLight = new MyLight();
-
-        StringTransformer st = new StringTransformer(textField.getText().toString());
-
-        myLight.lightStr(st.getMorse_string());
+        myLight.lightStr(textField.getText().toString());
 
         /*
         // SOS

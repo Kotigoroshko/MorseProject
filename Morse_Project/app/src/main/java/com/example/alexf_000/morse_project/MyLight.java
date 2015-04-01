@@ -51,7 +51,9 @@ public class MyLight {
     }
 
     public void lightStr(String str){
-        char[] string = str.toCharArray();
+        StringTransformer st = new StringTransformer(str);
+
+        char[] string = st.getMorse_string().toCharArray();
         for(int i=0; i<str.length(); i++){
             if(string[i] == '.'){
                 lightDot();

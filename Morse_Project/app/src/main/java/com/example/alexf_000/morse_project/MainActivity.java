@@ -48,31 +48,6 @@ public class MainActivity extends ActionBarActivity {
         myLight = new MyLight();
         myLight.lightStr(textField.getText().toString());
 
-        /*
-        // SOS
-        myLight.lightDot();
-        MyLight.pause(MyLight.SYMBOL_SPACE);
-        myLight.lightDot();
-        MyLight.pause(MyLight.SYMBOL_SPACE);
-        myLight.lightDot();
-
-        MyLight.pause(MyLight.LETTER_SPACE);
-
-        myLight.lightDash();
-        MyLight.pause(MyLight.SYMBOL_SPACE);
-        myLight.lightDash();
-        MyLight.pause(MyLight.SYMBOL_SPACE);
-        myLight.lightDash();
-
-        MyLight.pause(MyLight.LETTER_SPACE);
-
-        myLight.lightDot();
-        MyLight.pause(MyLight.SYMBOL_SPACE);
-        myLight.lightDot();
-        MyLight.pause(MyLight.SYMBOL_SPACE);
-        myLight.lightDot();
-        */
-
         myLight.end();
     }
 

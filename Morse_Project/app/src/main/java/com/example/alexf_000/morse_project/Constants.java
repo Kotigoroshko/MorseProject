@@ -14,8 +14,5 @@ public class Constants {
     public static final int SYMBOL_SPACE = UNIT;
     public static final int LETTER_SPACE = 3 * UNIT;
 
-    public static final int SYMBOL_SPACE_VIBRO = UNIT * 3;
-    public static final int LETTER_SPACE_VIBRO = UNIT * 12;
-
     public static final int WORD_SPACE = 7 * UNIT;
 }

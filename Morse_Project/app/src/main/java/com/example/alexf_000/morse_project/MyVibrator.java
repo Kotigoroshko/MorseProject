@@ -16,7 +16,11 @@ public class MyVibrator {
         v = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
-    public void vibrateStr(String str) {
+    public void vibrateStr(String s) {
+
+        StringTransformer st = new StringTransformer(s);
+        String str = st.getMorse_string();
+
         long[] arr = new long[str.length()*2+1];
         arr[0] = 0;
 

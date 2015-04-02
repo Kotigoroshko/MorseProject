@@ -36,10 +36,7 @@ public class MainActivity extends ActionBarActivity {
     public void onVibroClick(View view){
 
         vibr = new MyVibrator(MainActivity.this);
-
-        StringTransformer st = new StringTransformer(textField.getText().toString());
-
-        vibr.vibrateStr(st.getMorse_string());
+        vibr.vibrateStr(textField.getText().toString());
 
     }
 

@@ -1,16 +1,13 @@
 package com.example.alexf_000.morse_project;
 
-import android.content.Context;
 import android.hardware.Camera;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -21,6 +18,7 @@ public class MainActivity extends ActionBarActivity {
     private MyLight myLight;
     private MyVibrator vibr;
     private EditText textField;
+    private MySound mySound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +44,12 @@ public class MainActivity extends ActionBarActivity {
         myLight.lightStr(textField.getText().toString());
 
         myLight.end();
+    }
+
+    public void onSoundClick(View view){
+
+        mySound = new MySound(MainActivity.this);
+        mySound.soundStr(textField.getText().toString());
     }
 
 

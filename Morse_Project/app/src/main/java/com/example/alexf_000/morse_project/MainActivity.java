@@ -40,8 +40,13 @@ public class MainActivity extends ActionBarActivity {
 
     public void onLightClick(View view){
 
+        StringTransformer st = new StringTransformer(textField.getText().toString());
+
+
+
         myLight = new MyLight();
-        myLight.lightStr(textField.getText().toString());
+        myLight.lightStr(st.getMorse_string());
+
 
         myLight.end();
     }
@@ -49,7 +54,21 @@ public class MainActivity extends ActionBarActivity {
     public void onSoundClick(View view){
 
         mySound = new MySound(MainActivity.this);
-        mySound.soundStr(textField.getText().toString());
+        //mySound.soundStr(textField.getText().toString());
+
+        mySound.soundDot();
+
+        mySound.soundDash();
+        mySound.soundDash();
+        mySound.soundDash();
+
+        mySound.soundDot();
+
+
+        /*MyLight.pause(Constants.SYMBOL_SPACE);
+        mySound.soundDot();*/
+
+        //mySound.end();
     }
 
 

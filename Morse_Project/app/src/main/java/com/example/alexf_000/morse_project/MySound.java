@@ -10,39 +10,45 @@ import android.media.MediaPlayer;
  */
 public class MySound {
 
-    AudioManager am;
-    public MediaPlayer mediaPlayer1;
+    //AudioManager am;
+    //public MediaPlayer mediaPlayer1;
     public MediaPlayer mediaPlayer2;
     Context context;
 
     public MySound(Context mContext) {
-        am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+        //am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         context=mContext;
 
-        mediaPlayer1 = MediaPlayer.create(context, R.raw.beep_short);
+        //mediaPlayer1 = MediaPlayer.create(context, R.raw.beep_short);
         mediaPlayer2 = MediaPlayer.create(context, R.raw.beep_long);
+
+        mediaPlayer2.setLooping(true);
+        mediaPlayer2.start();
+        mediaPlayer2.pause();
     }
 
     public void end(){
-        mediaPlayer1.stop();
+        //mediaPlayer1.stop();
         mediaPlayer2.stop();
 
-        mediaPlayer1.release();
+        //mediaPlayer1.release();
         mediaPlayer2.release();
     }
 
     public void soundDot() {
-        //mediaPlayer = MediaPlayer.create(context, R.raw.beep_short);
-        mediaPlayer1.start();
-        pause(1000);
+        //mediaPlayer2 = MediaPlayer.create(context, R.raw.beep);
+        mediaPlayer2.start();
+        pause(Constants.DOT);
+        mediaPlayer2.pause();
         //mediaPlayer1.release();
 
     }
 
-    public void soundDash() {
-        //mediaPlayer = MediaPlayer.create(context, R.raw.beep_long);
+    public void soundDash(){
+        //mediaPlayer2 = MediaPlayer.create(context, R.raw.beep);
         mediaPlayer2.start();
-        pause(1000);
+        pause(Constants.DASH);
+        mediaPlayer2.pause();
         //mediaPlayer2.release();
 
     }
@@ -56,7 +62,7 @@ public class MySound {
         //mediaPlayer.start();
     }
 
-    public void pause(int constant){
+    private void pause(int constant){
         try {
             Thread.sleep(constant);
         } catch (InterruptedException e) {
@@ -65,20 +71,22 @@ public class MySound {
     }
 
     public void soundStr(String str){
-        StringTransformer st = new StringTransformer(str);
+        //StringTransformer st = new StringTransformer(str);
 
-        char[] string = st.getMorse_string().toCharArray();
+
+        char[] string = str.toCharArray();
+
         for(int i=0; i<str.length(); i++){
             if(string[i] == '.'){
                 soundDot();
-                pause(mediaPlayer1.getDuration());
+                //pause(mediaPlayer1.getDuration());
                 //shortPause();
                 pause(Constants.SYMBOL_SPACE);
             }
 
             if(string[i] == '-'){
                 soundDash();
-                pause(mediaPlayer2.getDuration());
+                //pause(mediaPlayer2.getDuration());
                 //shortPause();
                 pause(Constants.SYMBOL_SPACE);
             }

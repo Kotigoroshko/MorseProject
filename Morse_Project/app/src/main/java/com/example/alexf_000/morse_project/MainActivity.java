@@ -53,20 +53,22 @@ public class MainActivity extends ActionBarActivity {
 
     public void onSoundClick(View view){
 
+        StringTransformer st = new StringTransformer(textField.getText().toString());
+
+
         mySound = new MySound(MainActivity.this);
-        //mySound.soundStr(textField.getText().toString());
+        mySound.soundStr(st.getMorse_string());
 
+
+       /* mySound.soundDot();
+        MyLight.pause(Constants.SYMBOL_SPACE);
         mySound.soundDot();
-
-        mySound.soundDash();
-        mySound.soundDash();
-        mySound.soundDash();
-
+        MyLight.pause(Constants.SYMBOL_SPACE);
         mySound.soundDot();
+        MyLight.pause(Constants.SYMBOL_SPACE);
+        mySound.soundDash();*/
 
 
-        /*MyLight.pause(Constants.SYMBOL_SPACE);
-        mySound.soundDot();*/
 
         //mySound.end();
     }

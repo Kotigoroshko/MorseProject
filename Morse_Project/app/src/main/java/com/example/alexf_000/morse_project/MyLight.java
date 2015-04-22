@@ -1,5 +1,7 @@
 package com.example.alexf_000.morse_project;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.hardware.Camera;
 
 /**
@@ -8,19 +10,30 @@ import android.hardware.Camera;
 public class MyLight {
     private Camera camera;
     private Camera.Parameters params;
+    private Context context;
 
-    public MyLight(){
+    public MyLight(Context context)
+    {
+        this.context = context;
+
         start();
     };
 
     public void start(){
-        camera = Camera.open();
+        PackageManager packageManager = context.getPackageManager();
 
-        params = camera.getParameters();
-        params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-        camera.setParameters(params);
+// if device support flash?
+        if (packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
+            camera = Camera.open();
 
-        camera.startPreview();
+            params = camera.getParameters();
+            params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+            camera.setParameters(params);
+
+            camera.startPreview();
+        }
+
+
     }
 
     public void end(){
